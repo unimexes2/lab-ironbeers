@@ -15,21 +15,39 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Register the location for handlebars partials here:
 
 // ...
-app.get('/beers', (req, res) => {
-  punkAPI
-    .getBeers()
-    .then(beersFromApi => {
-      res.send({ beersFromApi });
-    })
-    .catch(error => console.log(error));
-});
-// Add the route handlers here:
-
 app.get("/", (req, res) => {
   // console.log(process.env.CLAVE_SECRETA)
   // res.send('Bonjour World! tu clave secreta es: ' + process.env.CLAVE_SECRETA)
   res.render("home.hbs");
 });
 
+app.get('/beers', (req, res) => {
+  punkAPI
+    .getBeers()
+    .then(beersFromApi => {
 
-app.listen(3000, () => console.log('🏃‍ on port 3000'));
+      
+      res.render("beers.hbs", { beersFromApi});
+      //res.send({beersFromApi  });
+    })
+    .catch(error => console.log(error));
+});
+
+app.get('/random-beer', (req, res) => {
+  punkAPI
+  .getRandom()
+  .then(responseFromAPI => {
+    
+    let resp=responseFromAPI[0];
+    console.log("ll",resp)
+    res.render("random-beer.hbs", {resp})
+  })
+  .catch(error => console.log(error));
+});
+
+
+// Add the route handlers here:
+
+
+
+app.listen(3001, () => console.log('🏃‍ on port 3000'));

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/stylesheets/styles.css">
+
+<h1>random</h1>
+<div id="main-random">
+<div>
+<img src="{{resp.image_url}}" alt="beer" width="100px">
+</div><div><p> {{resp.description}}</p>
+<br>
+<p> {{resp.tagline}}</p>
+<br>
+<ul>
+{{#each resp.food_pairing}}
+<li> {{this}}</li>
+{{/each}}
+</ul>
+<br>
+<h4>Brewer Tips</h4><p> {{resp.brewers_tips}}</p>
+</div>
+</div>
