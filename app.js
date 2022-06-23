@@ -45,6 +45,30 @@ app.get('/random-beer', (req, res) => {
   .catch(error => console.log(error));
 });
 
+app.get('/details', (req, res) => {
+ 
+  console.log("QUER",req.query);
+  punkAPI
+
+  .getBeer(req.query.id)
+
+  .then(responseFromAPI => {
+    
+    let resp=responseFromAPI[0];
+    console.log("ll",resp)
+    res.render("detail.hbs", {resp})
+  })
+  .catch(error => console.log(error));
+});
+
+
+
+
+
+
+
+
+
 
 // Add the route handlers here:
 

@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/stylesheets/styles.css">
+
+
+<div id="main-random">
+   
+<div id ="desc">       
+   {{>beerpartial resp}}
+        <ul>
+            {{#each resp.food_pairing}}
+            <li> {{this}}</li>
+            {{/each}}
+        </ul>
+        <br>
+        <h4>Brewer Tips</h4>
+        <p> {{resp.brewers_tips}}</p>
+    </div>
+</div>
